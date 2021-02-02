@@ -14,7 +14,7 @@ import common
 # client_lr = 0.1
 server_opt = "SGD"
 client_opt = "Adam"
-client_opt_strategy = "reinit"
+client_opt_strategy = "avg"
 
 max_rounds = 100
 n_clients_per_round = 10
@@ -27,7 +27,7 @@ E = 1
 
 project_name = f"{model}{NC}c{E}e{max_rounds}r{n_clients_per_round}f-{server_opt}-{client_opt_strategy[0]}-{client_opt}"
 
-for client_lr_lg in np.arange(-4.0, -2.0, 0.5):
+for client_lr_lg in np.arange(-4.0, -1.5, 0.5):
     client_lr = 10 ** client_lr_lg
     for server_lr_lg in [0]:# np.arange(-2.0, 0.5, 0.5):
         server_lr = 10 ** server_lr_lg
