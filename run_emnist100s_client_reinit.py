@@ -27,6 +27,7 @@ E = 1
 
 project_name = f"{model}{NC}c{E}e{max_rounds}r{n_clients_per_round}f-{server_opt}-{client_opt_strategy[0]}-{client_opt}"
 
+
 for client_lr_lg in np.arange(-2.0, 0.5, 0.5):
     client_lr = 10 ** client_lr_lg
     for server_lr_lg in [0]:# np.arange(-2.0, 0.5, 0.5):
