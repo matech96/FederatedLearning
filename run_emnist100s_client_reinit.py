@@ -14,7 +14,7 @@ import common
 # client_lr = 0.1
 server_opt = "SGD"
 client_opt = "Adam"
-client_opt_strategy = "avg"
+client_opt_strategy = "reinit"
 
 max_rounds = 100
 n_clients_per_round = 10
