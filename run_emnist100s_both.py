@@ -23,13 +23,13 @@ C = n_clients_per_round / NC
 B = 20
 is_iid = False
 model = "CNN"
-E = 1
+E = 5
 
 project_name = f"{model}{NC}c{E}e{max_rounds}r{n_clients_per_round}f-{server_opt}-{client_opt_strategy[0]}-{client_opt}"
 
 for client_lr_lg in np.arange(-4.0, -1.5, 0.5):
     client_lr = 10 ** client_lr_lg
-    for server_lr_lg in [-1.5]: # np.arange(-4.0, -1.5, 0.5):
+    for server_lr_lg in [-1.0]: # np.arange(-4.0, -1.5, 0.5):
         server_lr = 10 ** server_lr_lg
         config = TorchFederatedLearnerEMNISTConfig(
             CLIENT_LEARNING_RATE=client_lr,
