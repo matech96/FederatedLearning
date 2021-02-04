@@ -14,3 +14,4 @@ __pycache__/*
 data/*
 notebooks/2c_opt/*
 tmp/*
+.virtual_documents/*
