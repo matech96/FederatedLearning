@@ -23,7 +23,7 @@ C = n_clients_per_round / NC
 B = 20
 is_iid = False
 model = "CNN"
-E = 1
+E = 5
 
 project_name = f"{model}{NC}c{E}e{max_rounds}r{n_clients_per_round}f-{server_opt}-{client_opt_strategy[0]}-{client_opt}"
 
