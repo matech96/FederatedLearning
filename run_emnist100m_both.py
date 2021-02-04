@@ -1,4 +1,4 @@
-from comet_ml import Experiment
+from comet_ml import Experiment, OfflineExperiment
 import numpy as np
 
 from FLF.TorchFederatedLearner import (
@@ -56,7 +56,7 @@ for client_lr_lg in np.arange(-3.0, -0.5, 0.5):
             STORE_MODEL_IN_RAM=False,
         )
         name = f"{config.SERVER_OPT}: {config.SERVER_LEARNING_RATE} - {config.CLIENT_OPT_STRATEGY} - {config.CLIENT_OPT}: {config.CLIENT_LEARNING_RATE}"
-        experiment = Experiment(
+        experiment = OfflineExperiment(offline_directory="/tmp",
             workspace="federated-learning-emnistlm", project_name=project_name
         )
         try:
