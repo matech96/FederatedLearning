@@ -133,7 +133,7 @@ class TorchFederatedLearner(ABC):
             th.backends.cudnn.deterministic = True
             th.backends.cudnn.benchmark = False
 
-        self.device = "cuda"  # th.device("cuda" if th.cuda.is_available() else "cpu")
+        self.device = th.device("cuda" if th.cuda.is_available() else "cpu")
         self.experiment = experiment
         self.config = config
         self.config.set_defaults()
