@@ -46,7 +46,6 @@ class TorchModelOptStateManager:
         self.__delete_objects_tmp_files()
 
     def switch_to_sgd(self, lr):
-        # TODO __del__
         self.__delete_objects_tmp_files()
         # opt_cls = sgd
         self.opt_cls = TorchOptRepo.name2cls("SGD")

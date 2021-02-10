@@ -57,7 +57,6 @@ class TorchClient:
         logging.info(f"Client {self.id} was created")
 
     def switch_to_sgd(self, lr):
-        # TODO state_man.switch
         self.state_man.switch_to_sgd(lr)
 
     def set_model(

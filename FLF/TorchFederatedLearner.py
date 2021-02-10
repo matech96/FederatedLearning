@@ -232,8 +232,6 @@ class TorchFederatedLearner(ABC):
             with timer:
                 for curr_round in range(self.config.MAX_ROUNDS):
                     self.experiment.log_parameter("curr_round", curr_round)
-                    # TODO if current round is larger than until
-                    #   __switch_to_sgd
                     if (self.config.CLIENT_OPT_STRATEGY_UNITL is not None) and (self.config.CLIENT_OPT_STRATEGY_UNITL < curr_round):
                         self.__switch_to_sgd(self.config.CLIENT_SGD_LEARNING_RATE)
                     self.__train_one_round(curr_round)
@@ -278,7 +276,6 @@ class TorchFederatedLearner(ABC):
         )
 
     def __switch_to_sgd(self, lr):
-        # TODO call switch on all clients
         for client in self.clients:
             client.switch_to_sgd(lr)
         # set strat to "reinit"
