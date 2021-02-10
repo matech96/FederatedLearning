@@ -85,38 +85,36 @@ class TorchClient:
             for curr_epoch in range(n_epochs):
                 correct = 0
                 for curr_batch, (data, target) in enumerate(self.dataloader):
-                    pass
-                    # data, target = data.to(self.device), target.to(self.device)
-                    # self.state_man.opt.zero_grad()
-                    # output = self.state_man.model(data)
-                    # loss = self.loss(output, target)
-                    # loss.backward()
-                    # if self.is_scaffold:
-                    #     with th.no_grad():
-                    #         additive = lambda2_params(
-                    #             self.state_man.c, self.server_c, lambda a, b: -1 * a + b
-                    #         )
-                    #         nn.utils.clip_grad_norm_(
-                    #             self.state_man.model.parameters(), 6.0
-                    #         )
-                    #         for p0, p1 in zip(
-                    #             self.state_man.model.parameters(), additive
-                    #         ):
-                    #             p0.grad = p0.grad + p1
-                    #     self.__log("SCAFFOLD: gradient modified")
-                    #
-                    # self.state_man.opt.step()
-                    #
-                    # pred = output.argmax(
-                    #     1, keepdim=True
-                    # )  # get the index of the max log-probability
-                    # correct += pred.eq(target.view_as(pred)).sum().item()
-                    #
-                    # if (curr_batch == 0) or (curr_batch % 10 == 0):
-                    #     self.trainer.log_client_step(
-                    #         loss.item(), self.id, curr_round, curr_epoch, curr_batch
-                    #     )
-                print(curr_batch)
+                    data, target = data.to(self.device), target.to(self.device)
+                    self.state_man.opt.zero_grad()
+                    output = self.state_man.model(data)
+                    loss = self.loss(output, target)
+                    loss.backward()
+                    if self.is_scaffold:
+                        with th.no_grad():
+                            additive = lambda2_params(
+                                self.state_man.c, self.server_c, lambda a, b: -1 * a + b
+                            )
+                            nn.utils.clip_grad_norm_(
+                                self.state_man.model.parameters(), 6.0
+                            )
+                            for p0, p1 in zip(
+                                self.state_man.model.parameters(), additive
+                            ):
+                                p0.grad = p0.grad + p1
+                        self.__log("SCAFFOLD: gradient modified")
+
+                    self.state_man.opt.step()
+
+                    pred = output.argmax(
+                        1, keepdim=True
+                    )  # get the index of the max log-probability
+                    correct += pred.eq(target.view_as(pred)).sum().item()
+
+                    if (curr_batch == 0) or (curr_batch % 10 == 0):
+                        self.trainer.log_client_step(
+                            loss.item(), self.id, curr_round, curr_epoch, curr_batch
+                        )
                 train_acc = correct / len(self.dataloader.dataset)
 
             self.trainer.log_metric(
