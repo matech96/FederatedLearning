@@ -69,7 +69,7 @@ config = TorchFederatedLearnerEMNISTConfig(
 )
 config_technical = TorchFederatedLearnerTechnicalConfig(
     BREAK_ROUND=300,
-    EVAL_ROUND=10,
+    EVAL_ROUND=1,
     TEST_LAST=20,
     STORE_OPT_ON_DISK=True,
     STORE_MODEL_IN_RAM=True,

@@ -252,6 +252,7 @@ class TorchFederatedLearner(ABC):
                         self.log_hist(curr_round)
 
                         test_acc = metrics["test_acc"]
+                        print(f"Test set accuracy in round {curr_round}: {test_acc}")
                         lastaccs.append(test_acc)
                         if self.__is_achieved_target(test_acc):
                             break
@@ -331,7 +332,7 @@ class TorchFederatedLearner(ABC):
                     else:
                         comm_avg_opt_state = opt_state
 
-        with ElapsedTime("Setting gradients"):
+        with ElapsedTime("Setting gradients", verbose=False):
             if self.server_opt is not None:
                 self.server_opt.zero_grad()
                 server_opt_state = self.server_opt.state_dict()
