@@ -228,7 +228,7 @@ class TorchFederatedLearner(ABC):
         """
         lastaccs = deque(maxlen=self.config_technical.TEST_LAST)
         try:
-            timer = ElapsedTime("Training")
+            timer = ElapsedTime("Training one round")
             with timer:
                 for curr_round in range(self.config.MAX_ROUNDS):
                     self.experiment.log_parameter("curr_round", curr_round)

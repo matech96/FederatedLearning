@@ -63,13 +63,13 @@ def do_training_emnist(
     learner.train()
 
 
-def get_besr_lrs_from_exps(SOPT, STR="r", COPT="sgd"):
+def get_besr_lrs_from_exps(project, SOPT, STR="r", COPT="sgd", scf=False, NC=3400, R=100, C=10):
     comet_api = comet_ml.api.API()
     maxes = pd.DataFrame(columns=["E", "slr", "clr"])
     for E in [1, 5, 10, 20, 30]:
         try:
             exps = comet_api.get(
-                f"federated-learning-emnist-s/cnn3400c{E}e100r10f-{SOPT}-{STR}-{COPT}"
+                f"federated-learning-{project}/cnn{NC}c{E}e{R}r{C}f-{SOPT}-{STR}-{COPT}{'-scf' if scf else ''}"
             )
         except NotFound:
             break
