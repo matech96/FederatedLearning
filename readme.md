@@ -17,7 +17,7 @@ Go to the `docker` folder and build the image!
 You can use the `run.py` file to run the experiments. You will need to configure it with the proper hyperparameters. Call `docker run -it --gpus 0 --env INCLUDE_TUTORIALS=false -v /path/to/FederatedLearning:/workspace -w /workspace fedopt python run.py -h` to learn more. We list the parameters for the experiments in the paper in the following table.
 
 ## Cross-device
-|               | 1                                                                     | 5                                                                                        | 10                                                                               | 20                                                                               |
+| Epoch         | 1                                                                     | 5                                                                                        | 10                                                                               | 20                                                                               |
 |---------------|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | SGD-SGD       | --eval_last_20 1.0 0.31622776601683794 SGD SGD 3400 10 1.0 100        | --eval_last_20 1.0 0.1 SGD SGD 3400 10 5.0 100                                           | --eval_last_20 1.0 0.1 SGD SGD 3400 10 10.0 100                                  | --eval_last_20 1.0 0.1 SGD SGD 3400 10 20.0 100                                  |
 | Yogi-SGD      | --eval_last_20 0.03162277660168379 0.1 Yogi SGD 3400 10 1.0 100       | --eval_last_20 0.03162277660168379 0.1 Yogi SGD 3400 10 5.0 100                          | --eval_last_20 0.03162277660168379 0.03162277660168379 Yogi SGD 3400 10 10.0 100 | --eval_last_20 0.03162277660168379 0.03162277660168379 Yogi SGD 3400 10 20.0 100 |
@@ -34,7 +34,7 @@ You can use the `run.py` file to run the experiments. You will need to configure
 | Yogi-SGD           | 0.1 0.1 Yogi SGD 340 170 1.0 10                                          | 0.1 0.03162277660168379 Yogi SGD 10 10 1.0 10                          |
 | SGD-(A)-Yogi       | --avg 0.03162277660168379 0.00031622776601683794 SGD Yogi 340 170 1.0 10 | --avg 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                  |
 | Yogi-(A)-Yogi      | --avg 0.1 0.0031622776601683794 Yogi Yogi 340 170 1.0 10                 | --avg 0.03162277660168379 0.0031622776601683794 Yogi Yogi 10 10 1.0 10 |
-| SGD-Yogi           |                                                                          | 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                        |
+| SGD-Yogi           | 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                          | 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                        |
 
 Type the appropiate hyperparameters at the end of the command:
 
