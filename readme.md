@@ -19,22 +19,24 @@ You can use the `run.py` file to run the experiments. You will need to configure
 ## Cross-device
 | Epoch         | 1                                                                     | 5                                                                                        | 10                                                                               | 20                                                                               |
 |---------------|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| SGD-SGD       | --eval_last_20 1.0 0.31622776601683794 SGD SGD 3400 10 1.0 100        | --eval_last_20 1.0 0.1 SGD SGD 3400 10 5.0 100                                           | --eval_last_20 1.0 0.1 SGD SGD 3400 10 10.0 100                                  | --eval_last_20 1.0 0.1 SGD SGD 3400 10 20.0 100                                  |
-| Yogi-SGD      | --eval_last_20 0.03162277660168379 0.1 Yogi SGD 3400 10 1.0 100       | --eval_last_20 0.03162277660168379 0.1 Yogi SGD 3400 10 5.0 100                          | --eval_last_20 0.03162277660168379 0.03162277660168379 Yogi SGD 3400 10 10.0 100 | --eval_last_20 0.03162277660168379 0.03162277660168379 Yogi SGD 3400 10 20.0 100 |
-| SGD-(A)-SGDM  | --avg --eval_last_20 1.0 0.31622776601683794 SGD SGDM 3400 10 1.0 100 | --avg --eval_last_20 1.0 0.1 SGD SGDM 3400 10 5.0 100                                    | --avg --eval_last_20 1.0 0.1 SGD SGDM 3400 10 10.0 100                           | --avg --eval_last_20 1.0 0.03162277660168379 SGD SGDM 3400 10 20.0 100           |
-| SGD-(A)-Yogi  | --avg --eval_last_20 1.0 0.01 SGD Yogi 3400 10 1.0 100                | --avg --eval_last_20 1.0 0.0031622776601683794 SGD Yogi 3400 10 5.0 100                  | --avg --eval_last_20 1.0 0.0031622776601683794 SGD Yogi 3400 10 10.0 100         | --avg --eval_last_20 1.0 0.01 SGD Yogi 3400 10 20.0 100                          |
-| Yogi-(A)-Yogi | --avg --eval_last_20 0.01 0.01 Yogi Yogi 3400 10 1.0 100              | --avg --eval_last_20 0.03162277660168379 0.0031622776601683794 Yogi Yogi 3400 10 5.0 100 | --avg --eval_last_20 0.03162277660168379 0.001 Yogi Yogi 3400 10 10.0 100        | --avg --eval_last_20 0.03162277660168379 0.001 Yogi Yogi 3400 10 20.0 100        |
+| SGD-SGD + SCAFFOLD       | --scaffold --eval_last_20 1.0 0.316 SGD SGD 3400 10 1.0 100        | --scaffold --eval_last_20 1.0 0.1 SGD SGD 3400 10 5.0 100                                           | --scaffold --eval_last_20 1.0 0.1 SGD SGD 3400 10 10.0 100                                  | --scaffold --eval_last_20 1.0 0.1 SGD SGD 3400 10 20.0 100                                  |
+| SGD-SGD       | --eval_last_20 1.0 0.316 SGD SGD 3400 10 1.0 100        | --eval_last_20 1.0 0.1 SGD SGD 3400 10 5.0 100                                           | --eval_last_20 1.0 0.1 SGD SGD 3400 10 10.0 100                                  | --eval_last_20 1.0 0.1 SGD SGD 3400 10 20.0 100                                  |
+| Yogi-SGD + SCAFFOLD      | --scaffold --eval_last_20 0.0316 0.1 Yogi SGD 3400 10 1.0 100       | --scaffold --eval_last_20 0.0316 0.1 Yogi SGD 3400 10 5.0 100                          | --scaffold --eval_last_20 0.0316 0.0316 Yogi SGD 3400 10 10.0 100 | --scaffold --eval_last_20 0.0316 0.0316 Yogi SGD 3400 10 20.0 100 |
+| Yogi-SGD      | --eval_last_20 0.0316 0.1 Yogi SGD 3400 10 1.0 100       | --eval_last_20 0.0316 0.1 Yogi SGD 3400 10 5.0 100                          | --eval_last_20 0.0316 0.0316 Yogi SGD 3400 10 10.0 100 | --eval_last_20 0.0316 0.0316 Yogi SGD 3400 10 20.0 100 |
+| SGD-(A)-SGDM  | --avg --eval_last_20 1.0 0.316 SGD SGDM 3400 10 1.0 100 | --avg --eval_last_20 1.0 0.1 SGD SGDM 3400 10 5.0 100                                    | --avg --eval_last_20 1.0 0.1 SGD SGDM 3400 10 10.0 100                           | --avg --eval_last_20 1.0 0.0316 SGD SGDM 3400 10 20.0 100           |
+| SGD-(A)-Yogi  | --avg --eval_last_20 1.0 0.01 SGD Yogi 3400 10 1.0 100                | --avg --eval_last_20 1.0 0.00316 SGD Yogi 3400 10 5.0 100                  | --avg --eval_last_20 1.0 0.00316 SGD Yogi 3400 10 10.0 100         | --avg --eval_last_20 1.0 0.01 SGD Yogi 3400 10 20.0 100                          |
+| Yogi-(A)-Yogi | --avg --eval_last_20 0.01 0.01 Yogi Yogi 3400 10 1.0 100              | --avg --eval_last_20 0.0316 0.00316 Yogi Yogi 3400 10 5.0 100 | --avg --eval_last_20 0.0316 0.001 Yogi Yogi 3400 10 10.0 100        | --avg --eval_last_20 0.0316 0.001 Yogi Yogi 3400 10 20.0 100        |
 
 ## Cross-silo
 
 |                    | taxi                                                                     | institution                                                            |
 |--------------------|--------------------------------------------------------------------------|------------------------------------------------------------------------|
-| SGD-SGD            | 1.0 0.31622776601683794 SGD SGD 340 170 1.0 10                           | 1.0 0.1 SGD SGD 10 10 1.0 10                                           |
-| SGD-SGD + SCAFFOLD | --scaffold 1.0 0.31622776601683794 SGD SGD 340 170 1.0 10                | --scaffold 1.0 0.1 SGD SGD 10 10 1.0 10                                |
-| Yogi-SGD           | 0.1 0.1 Yogi SGD 340 170 1.0 10                                          | 0.1 0.03162277660168379 Yogi SGD 10 10 1.0 10                          |
-| SGD-(A)-Yogi       | --avg 0.03162277660168379 0.00031622776601683794 SGD Yogi 340 170 1.0 10 | --avg 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                  |
-| Yogi-(A)-Yogi      | --avg 0.1 0.0031622776601683794 Yogi Yogi 340 170 1.0 10                 | --avg 0.03162277660168379 0.0031622776601683794 Yogi Yogi 10 10 1.0 10 |
-| SGD-Yogi           | 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                          | 1.0 0.0031622776601683794 SGD Yogi 10 10 1.0 10                        |
+| SGD-SGD            | 1.0 0.316 SGD SGD 340 170 1.0 10                           | 1.0 0.1 SGD SGD 10 10 1.0 10                                           |
+| SGD-SGD + SCAFFOLD | --scaffold 1.0 0.316 SGD SGD 340 170 1.0 10                | --scaffold 1.0 0.1 SGD SGD 10 10 1.0 10                                |
+| Yogi-SGD           | 0.1 0.1 Yogi SGD 340 170 1.0 10                                          | 0.1 0.0316 Yogi SGD 10 10 1.0 10                          |
+| SGD-(A)-Yogi       | --avg 0.0316 0.000316 SGD Yogi 340 170 1.0 10 | --avg 1.0 0.00316 SGD Yogi 10 10 1.0 10                  |
+| Yogi-(A)-Yogi      | --avg 0.1 0.00316 Yogi Yogi 340 170 1.0 10                 | --avg 0.0316 0.00316 Yogi Yogi 10 10 1.0 10 |
+| SGD-Yogi           | 1.0 0.00316 SGD Yogi 10 10 1.0 10                          | 1.0 0.00316 SGD Yogi 10 10 1.0 10                        |
 
 Type the appropiate hyperparameters at the end of the command:
 
